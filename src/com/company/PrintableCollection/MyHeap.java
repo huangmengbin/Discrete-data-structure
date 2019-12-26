@@ -77,7 +77,7 @@ public class MyHeap<T> extends MyList<MyHeap.Node>{
     public void poll(){
         //T result = first().data;
         if(first()==null)return;
-
+        MyFrame.enablePulse();
         try {
             Thread.sleep(getSleepTime());
             first().getButton().setText("<html><center>del<br>"+first().getButton().getText()+"</center></html>");
@@ -140,6 +140,7 @@ public class MyHeap<T> extends MyList<MyHeap.Node>{
     private void down(Node current){
         try {
             while (current.lhs()!=null){
+                MyFrame.enablePulse();
                 current.getButton().setBackground(Color.pink);
                 Thread.sleep(getSleepTime());
                 Node next = current.lhs();

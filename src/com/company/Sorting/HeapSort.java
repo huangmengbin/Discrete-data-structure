@@ -1,5 +1,6 @@
 package com.company.Sorting;
 
+import com.company.MyComponent.MyFrame;
 import com.company.PrintableCollection.MyHeap;
 import com.company.PrintableCollection.MyQueue;
 
@@ -10,7 +11,7 @@ public abstract class HeapSort {
 
     public static void main(String[]args){
         MyHeap<Integer> heap = new MyHeap<>( (a, b) -> (b-a) , 50);
-
+        MyFrame.setCurrentState(MyFrame.PULSE);
         ArrayList<Integer> integers = new ArrayList<>(Arrays.asList(217,2,5,67,666,67666,0,125,10,80,30,4));
         heap.create(integers);
 

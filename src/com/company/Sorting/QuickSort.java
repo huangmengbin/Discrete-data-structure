@@ -1,5 +1,6 @@
 package com.company.Sorting;
 
+import com.company.MyComponent.MyFrame;
 import com.company.PrintableCollection.MyList;
 import com.company.PrintableCollection.MyQueue;
 import com.company.PrintableCollection.MyStack;
@@ -11,8 +12,8 @@ public class QuickSort<T extends Comparable<T>> {
 
     private MyList<T> list;
 
-    private final static int sleepTime1 = 10;
-    private final static int sleepTime2 = 20;
+    private final static int sleepTime1 = 50;
+    private final static int sleepTime2 = 400;
     private final static Color twinkleColor =Color.cyan;        //代表指针所在的位置
     private final static Color runningColor = Color.green;      //代表正在处理
     private final static Color finalColor   = Color.lightGray;  //代表处理完成
@@ -40,9 +41,10 @@ public class QuickSort<T extends Comparable<T>> {
             ptrStack.push(0);
 
             Thread.sleep(sleepTime1);
-
+            MyFrame.setCurrentState(MyFrame.PULSE);
             while(!ptrStack.isEmpty()){
 
+                MyFrame.enablePulse();
                 final int first = ptrStack.pop();
                 final int last  = ptrStack.pop();
                 if( first > last )throw new RuntimeException(first+" > "+last);
@@ -60,6 +62,7 @@ public class QuickSort<T extends Comparable<T>> {
 
                     Thread.sleep(sleepTime1);
                 }
+                MyFrame.enablePulse();
                 basePtr = partition(first,last,basePtr);
 
 
@@ -113,7 +116,9 @@ public class QuickSort<T extends Comparable<T>> {
             }
 
             while (left!=right){//循环直至左右指针碰撞
+
                 {//----------------------------------------------------
+                    MyFrame.enablePulse();
                     right = getFirstLess(last, base, left, right);
                     if (left < right) {
                         move(right, left);
@@ -123,6 +128,7 @@ public class QuickSort<T extends Comparable<T>> {
                 }//-----------------------------------------------------
                 if(left==right)break;
                 {//-----------------------------------------------------
+                    MyFrame.enablePulse();
                     left = getFirstLarger(first, base, left, right);
                     if (left < right) {
                         move(left, right);
